@@ -43,7 +43,7 @@
 
         //Let's grab the Content-Type header from the response. Content-Type defines what type of data
         //the server sent back to us. It may not match the Accept header we sent to the server.
-        let contentType = response.headers.get('Content-Type');
+        const contentType = response.headers.get('Content-Type');
 
         //Grab the content section from the HTML so we can put things on the screen.
         const content = document.querySelector('#content');
@@ -63,12 +63,12 @@
         //If the server sent back json
         if(contentType === 'application/json') {
           //Parse the json back into a javascript object, and display the data.
-          let parsedResponse = JSON.parse(resText);
+          const parsedResponse = JSON.parse(resText);
           h1.textContent = `Name: ${parsedResponse.name}`;
           p.textContent = `Age: ${parsedResponse.age}`;
         } else if (contentType === 'text/xml') { //If the server sent back xml
           //Parse the xml into a document and select the data out.
-          let parsedResponse = new window.DOMParser().parseFromString(resText, 'text/xml');
+          const parsedResponse = new window.DOMParser().parseFromString(resText, 'text/xml');
           h1.textContent = 'Name: ' + parsedResponse.querySelector('name').textContent;
           p.textContent = 'Age: ' + parsedResponse.querySelector('age').textContent;
         }
@@ -121,7 +121,7 @@
 
         https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
       */
-      let fetchPromise = fetch(url, options);
+      const fetchPromise = fetch(url, options);
 
       /*Once the above line of code has run, the process of sending a request to the server has begun. Note
       that I say "begun" because we do not know when it will actually finish. All we have is our promise object,
