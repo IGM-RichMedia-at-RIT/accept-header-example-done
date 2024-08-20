@@ -18,7 +18,7 @@ const respond = (request, response, content, type) => {
 
 // function for our /cats page
 // Takes request, response and an array of client requested mime types
-const getCats = (request, response, acceptedTypes) => {
+const getCats = (request, response) => {
   // object to send
   const cat = {
     name: 'mr. cat',
@@ -27,7 +27,7 @@ const getCats = (request, response, acceptedTypes) => {
 
   // if the client's most preferred type (first option listed)
   // is xml, then respond xml instead
-  if (acceptedTypes[0] === 'text/xml') {
+  if (request.acceptedTypes[0] === 'text/xml') {
     // create a valid XML string with name and age tags.
     let responseXML = '<response>';
     responseXML = `${responseXML} <name>${cat.name}</name>`;
