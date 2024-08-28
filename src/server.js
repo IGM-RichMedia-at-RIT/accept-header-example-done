@@ -1,4 +1,4 @@
-const http = require('http'); // pull in the http server module 
+const http = require('http'); // pull in the http server module
 // pull in our response handler file
 const responseHandler = require('./responses.js');
 
