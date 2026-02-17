@@ -20,8 +20,11 @@ const onRequest = (request, response) => {
   const parsedUrl = new URL(request.url, `${protocol}://${request.headers.host}`);
 
   // grab the 'accept' headers (comma delimited) and split them into an array
-  // store them inside of the request object for use in handler functions
-  request.acceptedTypes = request.headers.accept.split(',');
+  // store them inside of the request object for use in handler functions.
+  // We also add a guard in case they don't send an accept header.
+  if(request.headers.accept) {
+    request.acceptedTypes = request.headers.accept.split(',');
+  }
 
   // check if the path name (the /name part of the url) matches
   // any in our url object. If so call that function. If not, default to index.
